@@ -27,7 +27,6 @@
 **
 ****************************************************************************/
 
-
 #include "declarativexyseries.h"
 #include "declarativexypoint.h"
 #include <QtCharts/QVXYModelMapper>
@@ -85,6 +84,23 @@ void DeclarativeXySeries::replace(int index, qreal newX, qreal newY)
     QXYSeries *series = qobject_cast<QXYSeries *>(xySeries());
     Q_ASSERT(series);
     series->replace(index, newX, newY);
+}
+
+void DeclarativeXySeries::replace(QVariantList values)
+{
+    QXYSeries *series = qobject_cast<QXYSeries *>(xySeries());
+    Q_ASSERT(series);
+
+    if (values.count() > 0 && values.at(0).canConvert(QVariant::Point)) {
+        QVector<QPointF> newValues{};
+        newValues.reserve(values.count());
+        for (int i=0; i<values.count(); ++i) {
+            if (values.at(i).canConvert(QVariant::Point)) {
+                newValues.append(values.at(i).toPointF());
+            }
+        }
+        series->replace(std::move(newValues));
+    }
 }
 
 void DeclarativeXySeries::remove(qreal x, qreal y)

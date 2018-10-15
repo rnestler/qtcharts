@@ -87,6 +87,7 @@ public:
     Q_INVOKABLE void append(qreal x, qreal y) { DeclarativeXySeries::append(x, y); }
     Q_INVOKABLE void replace(qreal oldX, qreal oldY, qreal newX, qreal newY) { DeclarativeXySeries::replace(oldX, oldY, newX, newY); }
     Q_REVISION(3) Q_INVOKABLE void replace(int index, qreal newX, qreal newY) { DeclarativeXySeries::replace(index, newX, newY); }
+    Q_REVISION(4) Q_INVOKABLE void replace(QVariantList values) { DeclarativeXySeries::replace(std::move(values)); }
     Q_INVOKABLE void remove(qreal x, qreal y) { DeclarativeXySeries::remove(x, y); }
     Q_REVISION(3) Q_INVOKABLE void remove(int index) { DeclarativeXySeries::remove(index); }
     Q_REVISION(4) Q_INVOKABLE void removePoints(int index, int count) { DeclarativeXySeries::removePoints(index, count); }

@@ -51,6 +51,7 @@ public:
     void append(qreal x, qreal y);
     void replace(qreal oldX, qreal oldY, qreal newX, qreal newY);
     void replace(int index, qreal newX, qreal newY);
+    void replace(QVariantList values);
     void remove(qreal x, qreal y);
     void remove(int index);
     void removePoints(int index, int count);

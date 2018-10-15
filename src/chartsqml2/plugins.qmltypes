@@ -1290,6 +1290,11 @@ Module {
             Parameter { name: "newY"; type: "double" }
         }
         Method {
+            name: "replace"
+            revision: 4
+            Parameter { name: "values"; type: "QVariantList" }
+        }
+        Method {
             name: "remove"
             Parameter { name: "x"; type: "double" }
             Parameter { name: "y"; type: "double" }
